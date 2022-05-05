@@ -6,16 +6,21 @@
   "configurations": [
     {
       "type": "node",
+      "request": "attach",
+      "name": "Attach to dev:debug",
+      "protocol": "inspector",
+      "port": 4321,
+      "restart": true,
+      "cwd": "${workspaceRoot}"
+    },
+    {
+      "type": "node",
       "request": "launch",
-      "name": "Build Project",
-      "program": "${workspaceFolder}/src/app.ts",
-      // "preLaunchTask": "npm: build",
-      "sourceMaps": true,
-      "smartStep": true,
-      "internalConsoleOptions": "openOnSessionStart",
-      "outFiles": [
-          "${workspaceFolder}/dist/**/*.js"
-      ]
-  }
+      "name": "Debug",
+      "protocol": "inspector",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "dev"]
+    }
   ]
 }
