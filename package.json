@@ -2,7 +2,8 @@
   "scripts": {
     "dev:debug": "ts-node-dev --transpile-only --respawn --inspect=4321 --project tsconfig.json src/app.ts",
     "dev": "ts-node-dev --transpile-only --respawn --project tsconfig.json src/app.ts",
-    "prestart": "npm run build",
+    "clear": "rm -rf dist",
+    "prestart": "npm run clear && npm run build",
     "build": "tsc",
     "start": "node dist/app.js"
   },
