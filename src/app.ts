@@ -13,5 +13,11 @@ import { LinkedList } from './algorithms/dataStructures/linkedList/linkedList';
 const list = new LinkedList();
 list.add(1, 'a');
 list.add(2, 'b')
+list.add(3, 'c')
+list.add(4, 'd')
+list.add(5, 'e')
+list.insertAt(2, 10, 'tw')
+list.deleteLastNode();
 
-console.log(list)
+//console.log(list.getAt(1))
+console.log(JSON.stringify(list))

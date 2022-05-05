@@ -1,3 +1,6 @@
 /dist
 /node_modules
 .env
+lockstep-api.d.ts
+lockstep-api.js
+lockstep-api.js.map

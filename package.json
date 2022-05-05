@@ -1,14 +1,26 @@
 {
+  "files": [
+    "lockstep-api.d.ts",
+    "lockstep-api.js",
+    "lockstep-api.js.map"
+  ],
   "scripts": {
+    "build:tsc": "tsc",
+    "build": "npm run clear && npm run build:tsc && npm run bundle",
+    "bundle": "rollup --config",
+    "clear": "rm -rf dist",
     "dev:debug": "ts-node-dev --transpile-only --respawn --inspect=4321 --project tsconfig.json src/app.ts",
     "dev": "ts-node-dev --transpile-only --respawn --project tsconfig.json src/app.ts",
-    "clear": "rm -rf dist",
-    "prestart": "npm run clear && npm run build",
-    "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "prestart": "npm run clear && npm run build"
   },
+  "main": "lockstep-api.js",
+  "types": "lockstep-api.d.ts",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.2",
     "nodemon": "^2.0.16",
+    "rollup": "^2.72.0",
+    "rollup-plugin-dts": "^4.2.1",
     "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.4"
