@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "tsnd --respawn --quiet --clear ./src/app.ts",
+    "dev:debug": "tsnd --respawn --debug ./src/app.ts",
+    "prestart": "npm run build",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  }
+}
