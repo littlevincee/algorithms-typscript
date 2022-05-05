@@ -1,11 +1,11 @@
 {
-  "name": "v-algorithm",
+  "name": "@littlevincee/v-algorithm",
+  "repository": {"url": "git@github.com:littlevincee/algorithms-typscript.git"},
   "version": "1.0.0",
   "author": {
     "name": "vinson wong",
     "email": "vinsonwong15@gmail.com"
   },
-  "private": "true",
   "main": "dist/bundle.js",
   "types": "dist/bundle.d.ts",
   "files": [
