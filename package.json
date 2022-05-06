@@ -16,12 +16,12 @@
     "dist/bundle.js.map"
   ],
   "scripts": {
-    "build:tsc": "tsc",
+    "tsc": "tsc",
     "clear": "rm -rf dist",
     "rollup": "rollup --config",
-    "rollup:bundle": "npm run clear && npm run build:tsc && npm run rollup",
+    "rollup:bundle": "npm run clear && npm run tsc && npm run rollup",
     "esbuild": "esbuild ./src --bundle --platform=node --target=node16.15 --outdir=dist --external:./node_modules/*",
-    "esbundle": "npm run clear && npm run tsc && npm run esbuild",
+    "esbundle": "npm run clear && npm run esbuild && npm run tsc",
     "test": "jest"
   },
   "devDependencies": {
