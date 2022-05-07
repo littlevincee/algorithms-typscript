@@ -7,7 +7,7 @@ class LinkedList<T> {
 
   constructor() {
     this.head = null;
-    this.tail = null
+    this.tail = null;
     this.size = 0;
   }
 
@@ -57,7 +57,7 @@ class LinkedList<T> {
       const newNode: LinkedListNode<T> = new LinkedListNode(key, value);
 
       if (!this.head) {
-        this.head = newNode
+        this.head = newNode;
       } else if (index === 0) {
         newNode.next = this.head;
         this.head = newNode;
@@ -66,7 +66,7 @@ class LinkedList<T> {
 
         if (prev) {
           newNode.next = prev!.next;
-          prev!.next = newNode
+          prev!.next = newNode;
         }
       }
 
@@ -84,7 +84,7 @@ class LinkedList<T> {
 
   deleteLastNode() {
     if (!this.head!.next) {
-      this.head = null
+      this.head = null;
       return;
     }
 
@@ -93,11 +93,11 @@ class LinkedList<T> {
 
     while (tail?.next) {
       prev = tail;
-      tail = tail.next
+      tail = tail.next;
     }
 
     prev!.next = null;
   }
 }
 
-export { LinkedList }
+export { LinkedList };
