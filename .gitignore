@@ -4,3 +4,5 @@
 lockstep-api.d.ts
 lockstep-api.js
 lockstep-api.js.map
+.nyc_output
+coverage
