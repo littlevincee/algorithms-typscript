@@ -1,6 +1,6 @@
 import { Node } from '../node/node';
 
-class LinkedListNode<T> extends Node {
+class LinkedListNode<T> extends Node<T> {
   next: LinkedListNode<T> | null;
   previous: LinkedListNode<T> | null;
 

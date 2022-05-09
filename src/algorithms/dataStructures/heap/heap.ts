@@ -3,22 +3,22 @@
  */
 import { Node } from '../node/node';
 
-class Heap {
-  nodes: Array<Node | undefined>;
+class Heap<T> {
+  nodes: Array<Node<T> | undefined>;
 
   constructor() {
     this.nodes = [];
   }
 
-  get isEmpty(): boolean {
+  isEmpty(): boolean {
     return this.nodes.length === 0;
   }
 
-  get getSize(): number {
+  getSize(): number {
     return this.nodes.length;
   }
 
-  insert(key: number, value: any) {
+  insert(key: number, value: T) {
     const node = new Node(key, value);
 
     const nodes = this.nodes;
@@ -29,7 +29,7 @@ class Heap {
   }
 
   peek(): any | undefined {
-    if (this.isEmpty) {
+    if (this.isEmpty()) {
       return undefined;
     }
 
@@ -39,7 +39,7 @@ class Heap {
   poll() {
     const nodes = this.nodes;
 
-    const size = this.getSize;
+    const size = this.getSize();
 
     const rootNode = nodes[0];
 
@@ -77,11 +77,13 @@ class Heap {
   sink(index: number): void {
     const nodes = this.nodes;
 
-    const size = this.getSize;
+    const size = this.getSize();
 
     const node = nodes[index];
 
-    while (index < size >> 1) {
+    const numberOfParentNodes = size >> 1;
+
+    while (index < numberOfParentNodes) {
       const leftChildIndex = this.getLeftChildIndex(index);
 
       const rightChildIndex = this.getRightChildIndex(index);
@@ -97,6 +99,7 @@ class Heap {
       }
 
       nodes[index] = nodes[smallerChildIndex];
+
       index = smallerChildIndex;
     }
 
@@ -119,12 +122,27 @@ class Heap {
     return (index - 1) >> 1;
   }
 
-  // #removeAt(index: number) {
+  getValues(): any[] {
+    const nodes = this.nodes;
+
+    const result: any[] = [];
+
+    for (let i = 0; i < nodes.length; i++) {
+      result.push(nodes[i]?.getValue());
+    }
+
+    return result;
+  }
+
+  // removeAt(index: number) {
   //   if (this.isEmpty()) {
   //     return null;
   //   }
 
-  //   const indexOfLastElem = this.size() - 1;
+  //   const indexOfLastElem = this.getSize() - 1;
+
+  //   const valueOfLastElem = this.nodes[indexOfLastElem]!.getValue();
+
   // }
 }
 

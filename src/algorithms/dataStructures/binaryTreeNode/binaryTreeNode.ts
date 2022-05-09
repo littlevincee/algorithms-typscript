@@ -1,10 +1,8 @@
 import { Node } from '../node/node';
 
-class BinaryTreeNode<T> extends Node {
-  // private parent: BinaryTreeNode<T> | null;
+class BinaryTreeNode<T> extends Node<T> {
   left: BinaryTreeNode<T> | null;
   right: BinaryTreeNode<T> | null;
-  // private meta: object;
 
   constructor(
     key: number,

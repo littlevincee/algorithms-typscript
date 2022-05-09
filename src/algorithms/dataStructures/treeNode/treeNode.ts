@@ -1,6 +1,6 @@
 import { Node } from '../node/node';
 
-class TreeNode<T> extends Node {
+class TreeNode<T> extends Node<T> {
   parent: TreeNode<T> | null;
   children: TreeNode<T>[];
 

@@ -1,12 +1,17 @@
 /**
- * @fileoverview Generic immutable node object
+ * Generic immutable node object
  */
 
-class Node {
-  key: number;
-  value: any;
+class Node<T> {
+  private key: number;
+  private value: T;
 
-  constructor(key: number, value: any) {
+  /**
+   *
+   * @param {number} key - The key value of the Node
+   * @param { T } value - The value of the Node
+   */
+  constructor(key: number, value: T) {
     this.key = key;
     this.value = value;
   }
@@ -15,8 +20,12 @@ class Node {
     return this.key;
   }
 
-  get getValue(): any {
+  get getValue(): T {
     return this.value;
+  }
+
+  set setValue(value: T) {
+    this.value = value;
   }
 }
 

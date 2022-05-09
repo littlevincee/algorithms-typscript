@@ -11,10 +11,6 @@ class LinkedList<T> {
     this.size = 0;
   }
 
-  get getSize() {
-    return this.size;
-  }
-
   add(key: number, value: T): void {
     const newNode: LinkedListNode<T> = new LinkedListNode(key, value);
 
@@ -33,6 +29,10 @@ class LinkedList<T> {
     this.size++;
   }
 
+  getSize() {
+    return this.size;
+  }
+
   getAt(index: number) {
     let counter = 0;
 
@@ -48,6 +48,22 @@ class LinkedList<T> {
     }
 
     return null;
+  }
+
+  getFirst(): LinkedListNode<T> | null {
+    return this.head;
+  }
+
+  getLast(): LinkedListNode<T> | null {
+    let lastNode = this.head;
+
+    if (lastNode) {
+      while (lastNode) {
+        lastNode = lastNode.next;
+      }
+    }
+
+    return lastNode;
   }
 
   insertAt(index: number, key: number, value: T) {
@@ -74,7 +90,7 @@ class LinkedList<T> {
     }
   }
 
-  deleteFirstNode() {
+  deleteFirstNode(): void {
     if (!this.head) {
       return;
     }
@@ -82,7 +98,7 @@ class LinkedList<T> {
     this.head = this.head.next;
   }
 
-  deleteLastNode() {
+  deleteLastNode(): void {
     if (!this.head!.next) {
       this.head = null;
       return;
@@ -97,6 +113,22 @@ class LinkedList<T> {
     }
 
     prev!.next = null;
+  }
+
+  deleteAt(index: number): void {
+    if (index === 0 && this.head) {
+      this.head = this.head?.next;
+    }
+
+    const prevNode = this.getAt(index - 1);
+
+    prevNode!.next = prevNode!.next!.next;
+
+    this.size--;
+  }
+
+  clear() {
+    this.head = null;
   }
 }
 
