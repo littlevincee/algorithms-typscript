@@ -44,6 +44,40 @@ describe('heap', () => {
     });
   });
 
+  describe('.remove()', () => {
+    it('should remove the root of the heap', () => {
+      const heap = new Heap();
+
+      const heapSpy = spy(heap, 'remove');
+
+      heap.insert(1, 1);
+      heap.insert(5, 5);
+      heap.insert(1, 1);
+      heap.insert(8, 8);
+      heap.insert(6, 6);
+      heap.insert(2, 2);
+      heap.insert(2, 2);
+      heap.insert(13, 13);
+      heap.insert(12, 12);
+      heap.insert(11, 11);
+      heap.insert(7, 7);
+      heap.insert(2, 2);
+      heap.insert(15, 15);
+      heap.insert(3, 3);
+      heap.insert(10, 10);
+
+      heap.poll();
+
+      const node = heap.remove(12);
+
+      expect(heapSpy.callCount).to.equal(1);
+
+      expect(heap.getSize()).to.equal(13);
+
+      expect(node).to.be.true;
+    });
+  });
+
   describe('.insert()', () => {
     it('should insert 14 nodes into the heap', () => {
       const heap = new Heap();

@@ -141,7 +141,7 @@ class Heap<T> {
 
     const lastNodeIndex = this.getSize() - 1;
 
-    const removedData = this.nodes[lastNodeIndex];
+    const removedData = this.nodes[index];
 
     this.swap(index, lastNodeIndex);
 

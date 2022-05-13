@@ -66,7 +66,7 @@ describe('binary search tree', () => {
 
       expect(foundNode).to.not.null;
 
-      expect(foundNode!.gegetValue()tValue).to.equal(valueToFind);
+      expect(foundNode!.getValue()).to.equal(valueToFind);
     });
 
     it('should not find a node and return null', () => {
