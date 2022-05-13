@@ -42,7 +42,7 @@ describe('binary search tree', () => {
 
       expect(foundNode).to.not.null;
 
-      expect(foundNode!.getValue).to.equal(valueToFind);
+      expect(foundNode!.getValue()).to.equal(valueToFind);
     });
 
     it('should find a node on the right subtree', () => {
@@ -66,7 +66,7 @@ describe('binary search tree', () => {
 
       expect(foundNode).to.not.null;
 
-      expect(foundNode!.getValue).to.equal(valueToFind);
+      expect(foundNode!.gegetValue()tValue).to.equal(valueToFind);
     });
 
     it('should not find a node and return null', () => {

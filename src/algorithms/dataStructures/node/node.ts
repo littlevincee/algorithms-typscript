@@ -16,15 +16,15 @@ class Node<T> {
     this.value = value;
   }
 
-  get getKey(): number {
+  getKey(): number {
     return this.key;
   }
 
-  get getValue(): T {
+  getValue(): T {
     return this.value;
   }
 
-  set setValue(value: T) {
+  setValue(value: T) {
     this.value = value;
   }
 }

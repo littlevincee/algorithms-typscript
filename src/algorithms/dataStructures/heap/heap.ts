@@ -1,5 +1,5 @@
 /**
- * @fileoverview Datastructure: Heap
+ * Datastructure: Heap (min-heap)
  */
 import { Node } from '../node/node';
 
@@ -28,7 +28,7 @@ class Heap<T> {
     this.swim(nodes.length - 1);
   }
 
-  peek(): any | undefined {
+  peek(): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
@@ -36,24 +36,8 @@ class Heap<T> {
     return this.nodes[0]!.getValue();
   }
 
-  poll() {
-    const nodes = this.nodes;
-
-    const size = this.getSize();
-
-    const rootNode = nodes[0];
-
-    if (size <= 0) {
-      return undefined;
-    } else if (size === 1) {
-      nodes.length = 0;
-    } else {
-      nodes[0] = nodes.pop();
-
-      this.sink(0);
-    }
-
-    return rootNode!.getValue();
+  poll(): Node<T> | null | undefined {
+    return this.removeAt(0);
   }
 
   swim(index: number) {
@@ -63,7 +47,7 @@ class Heap<T> {
     while (index > 0) {
       const parentIndex = this.getParentIndex(index);
 
-      if (nodes[parentIndex]!.getKey > node!.getKey) {
+      if (nodes[parentIndex]!.getKey() > node!.getKey()) {
         nodes[index] = nodes[parentIndex];
         index = parentIndex;
       } else {
@@ -90,11 +74,11 @@ class Heap<T> {
 
       const smallerChildIndex =
         rightChildIndex < size &&
-        nodes[rightChildIndex]!.getKey < nodes[leftChildIndex]!.getKey
+        nodes[rightChildIndex]!.getKey() < nodes[leftChildIndex]!.getKey()
           ? rightChildIndex
           : leftChildIndex;
 
-      if (nodes[smallerChildIndex]!.getKey > node!.getKey) {
+      if (nodes[smallerChildIndex]!.getKey() > node!.getKey()) {
         break;
       }
 
@@ -134,16 +118,52 @@ class Heap<T> {
     return result;
   }
 
-  // removeAt(index: number) {
-  //   if (this.isEmpty()) {
-  //     return null;
-  //   }
+  remove(key: number): boolean {
+    if (key < 0 || key > this.getSize()) {
+      return false;
+    }
 
-  //   const indexOfLastElem = this.getSize() - 1;
+    for (let i = 0; i < this.getSize(); i++) {
+      if (this.nodes[i]?.getKey() === key) {
+        this.removeAt(i);
 
-  //   const valueOfLastElem = this.nodes[indexOfLastElem]!.getValue();
+        return true;
+      }
+    }
 
-  // }
+    return false;
+  }
+
+  private removeAt(index: number) {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    const lastNodeIndex = this.getSize() - 1;
+
+    const removedData = this.nodes[lastNodeIndex];
+
+    this.swap(index, lastNodeIndex);
+
+    this.nodes.pop();
+
+    const currentNode = this.nodes[index];
+
+    this.sink(index);
+
+    if (this.nodes[index]?.getKey() === currentNode?.getKey()) {
+      this.swim(index);
+    }
+
+    return removedData;
+  }
+
+  private swap(sourceNodeIndex: number, destinationNodeIndex: number) {
+    [this.nodes[sourceNodeIndex], this.nodes[destinationNodeIndex]] = [
+      this.nodes[destinationNodeIndex],
+      this.nodes[sourceNodeIndex],
+    ];
+  }
 }
 
 export { Heap };

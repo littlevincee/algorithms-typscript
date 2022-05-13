@@ -3,7 +3,7 @@ install:
 clear:
 	pnpm run clear
 
-bundle:
+build:
 	pnpm run bundle
 
 test:

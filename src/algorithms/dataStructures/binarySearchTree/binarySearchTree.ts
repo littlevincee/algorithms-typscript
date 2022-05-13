@@ -21,7 +21,7 @@ class BinarySearchTree<T> {
   }
 
   private insertNode(node: BinaryTreeNode<T>, newNode: BinaryTreeNode<T>) {
-    if (newNode.getValue < node.getValue) {
+    if (newNode.getValue() < node.getValue()) {
       if (node.left === null) {
         node.left = newNode;
       } else {
@@ -51,12 +51,12 @@ class BinarySearchTree<T> {
 
     // dig into left subtree when the value we're looking
     // for is smaller than the current value
-    if (value < root.getValue) {
+    if (value < root.getValue()) {
       root.left = this.removeNode(root.left, value);
 
       // dig into right subtree when the value we're
       // looking for is larger than the current value
-    } else if (value > root.getValue) {
+    } else if (value > root.getValue()) {
       root.right = this.removeNode(root.right, value);
     } else {
       // deleting node that is leaf
@@ -77,12 +77,12 @@ class BinarySearchTree<T> {
         const tmp = this.findMin(root.right);
 
         // swap the data
-        root.setValue = tmp.getValue;
+        root.setValue(tmp.getValue());
 
         // go into the right subtree and remove the leftmost node
         // we found and swapped data with. It is to prevent having
         // two nodes in the tree with the same value
-        root.right = this.removeNode(root.right, root.getValue);
+        root.right = this.removeNode(root.right, root.getValue());
       }
     }
 
@@ -113,9 +113,9 @@ class BinarySearchTree<T> {
     let current = this.root;
 
     while (current) {
-      if (value === current.getValue) {
+      if (value === current.getValue()) {
         break;
-      } else if (value < current!.getValue) {
+      } else if (value < current!.getValue()) {
         current = current!.left;
       } else {
         current = current!.right;
@@ -142,7 +142,7 @@ class BinarySearchTree<T> {
         this.inOrder(left, result);
       }
 
-      result.push(node!.getValue);
+      result.push(node!.getValue());
 
       if (right) {
         this.inOrder(right, result);
@@ -163,7 +163,7 @@ class BinarySearchTree<T> {
       const left = node!.left;
       const right = node!.right;
 
-      result.push(node!.getValue);
+      result.push(node!.getValue());
 
       if (left) {
         this.preOrder(left, result);
@@ -196,7 +196,7 @@ class BinarySearchTree<T> {
         this.postOrder(right, result);
       }
 
-      result.push(node!.getValue);
+      result.push(node!.getValue());
     }
   }
 
@@ -224,7 +224,7 @@ class BinarySearchTree<T> {
         }
 
         if (node) {
-          result.push(node.getValue);
+          result.push(node.getValue());
         }
       }
     }
