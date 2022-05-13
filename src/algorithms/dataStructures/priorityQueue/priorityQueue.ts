@@ -13,10 +13,6 @@ class PriorQueue<T> extends Heap<T> {
   dequeue(): Node<T> | null | undefined {
     return this.poll();
   }
-
-  peek(): T | undefined {
-    return this.peek();
-  }
 }
 
 export { PriorQueue };
