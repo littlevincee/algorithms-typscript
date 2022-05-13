@@ -10,15 +10,7 @@ class Heap<T> {
     this.nodes = [];
   }
 
-  isEmpty(): boolean {
-    return this.nodes.length === 0;
-  }
-
-  getSize(): number {
-    return this.nodes.length;
-  }
-
-  insert(key: number, value: T) {
+  insert(key: number, value: T): void {
     const node = new Node(key, value);
 
     const nodes = this.nodes;
@@ -40,7 +32,7 @@ class Heap<T> {
     return this.removeAt(0);
   }
 
-  swim(index: number) {
+  swim(index: number): void {
     const nodes = this.nodes;
     const node = nodes[index];
 
@@ -92,6 +84,14 @@ class Heap<T> {
 
   clear(): void {
     this.nodes.length = 0;
+  }
+
+  isEmpty(): boolean {
+    return this.nodes.length === 0;
+  }
+
+  getSize(): number {
+    return this.nodes.length;
   }
 
   getLeftChildIndex(index: number): number {
